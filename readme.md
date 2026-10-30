@@ -9,6 +9,7 @@ Inspect incoming webhooks alongside the rest of your Rails app in Avo. Find fail
 3. Status and handler filters, including handlers no longer registered in your app.
 4. JSON-formatted payloads and request headers, with plain-text fallback for non-JSON bodies.
 5. No create, edit, delete, or replay controls. Direct write requests are rejected too.
+6. Copy webhook IDs and event IDs from rows or details, and copy the displayed payload from details, matching the original admin's copy controls.
 
 Uses Avo's built-in fields and filters. No dashboard, custom component, or paid add-on is required.
 

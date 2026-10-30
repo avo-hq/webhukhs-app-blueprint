@@ -6,9 +6,9 @@ class Avo::Resources::WebhukhsReceivedWebhook < Avo::BaseResource
   self.default_sort_direction = :desc
 
   def fields
-    field :id, as: :id, sortable: true
+    field :id, as: :id, sortable: true, copyable: true
     field :handler_module_name, as: :text, name: "Handler"
-    field :handler_event_id, as: :text, name: "Event ID"
+    field :handler_event_id, as: :text, name: "Event ID", copyable: true
     field :status, as: :badge, options: {
       success: ["processed"],
       warning: ["received", "processing"],
@@ -18,7 +18,7 @@ class Avo::Resources::WebhukhsReceivedWebhook < Avo::BaseResource
     field :created_at, as: :date_time, name: "Received at"
     field :updated_at, as: :date_time
     field :body, as: :code, name: "Payload", language: "javascript",
-      always_show: true, height: "300px",
+      always_show: true, height: "300px", copyable: true,
       help: "Display limited to 256 KiB. Invalid UTF-8 is replaced for display only. The stored payload is unchanged." do
       body = record.body
       text = body.byteslice(0, 256 * 1024).dup.force_encoding(Encoding::UTF_8).scrub

@@ -16,6 +16,8 @@ class WebhukhsBlueprintTest < ActionDispatch::IntegrationTest
     assert_select "a[href='#{@path}/new']", count: 0
     assert_select "a[href$='/edit']", count: 0
     assert_select "[data-turbo-method='delete']", count: 0
+    assert_select '[data-clipboard-target="source"]', text: @error.id.to_s
+    assert_select '[data-clipboard-target="source"]', text: "evt_error"
     assert_operator response.body.index("evt_processed"), :<, response.body.index("evt_error")
   end
 
@@ -35,6 +37,9 @@ class WebhukhsBlueprintTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "HTTP_X_EVENT_ID"
     assert_select "a[href$='/edit']", count: 0
     assert_select "[data-turbo-method='delete']", count: 0
+    assert_select '[data-clipboard-target="source"]', text: @error.id.to_s
+    assert_select '[data-clipboard-target="source"]', text: "evt_error"
+    assert_select '[data-clipboard-target="source"]', text: /\{\s*"order_id": 42\s*\}/
   end
 
   def test_plain_text_and_html_are_not_executed
