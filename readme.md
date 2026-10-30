@@ -12,6 +12,20 @@ Inspect incoming webhooks alongside the rest of your Rails app in Avo. Find fail
 
 Uses Avo's built-in fields and filters. No dashboard, custom component, or paid add-on is required.
 
+## Screenshots
+
+### Webhook list
+
+![Webhook list with status badges](screenshots/index.jpg)
+
+### Filtered errors
+
+![Webhook list filtered to errors](screenshots/filtered.jpg)
+
+### Payload and request headers
+
+![Webhook details with JSON payload and request headers](screenshots/detail.jpg)
+
 ## Install
 
 1. Install [Avo](https://docs.avohq.io/4.0/installation.html) and [Webhukhs](https://github.com/skatkov/webhukhs). This blueprint targets Avo 4 and Webhukhs 0.8.2 on Rails 7.2 or newer, with the Ruby version required by your Rails and Avo versions.
@@ -39,20 +53,6 @@ The generated files belong to your app. Review them before deploying and customi
 3. Payload display is capped at 256 KiB to avoid rendering very large bodies. Invalid UTF-8 bytes are replaced for display. Neither changes the stored bytes. JSON bodies within the limit are pretty-printed; other bodies are shown as text.
 4. The list sorts by primary key, descending, to use the existing primary-key index. Use integer or UUIDv7 IDs for chronological ordering. Random UUIDv4 IDs do not sort chronologically. Other columns are intentionally not sortable.
 5. Reprocessing is intentionally excluded. Replaying a webhook can repeat external side effects and needs an application-specific policy.
-
-## Screenshots
-
-### Webhook list
-
-![Webhook list with status badges](screenshots/index.jpg)
-
-### Filtered errors
-
-![Webhook list filtered to errors](screenshots/filtered.jpg)
-
-### Payload and request headers
-
-![Webhook details with JSON payload and request headers](screenshots/detail.jpg)
 
 ## Development
 
